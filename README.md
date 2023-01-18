@@ -31,26 +31,30 @@ sudo pip3 install .
 sudo pip3 install hid==1.0.4
 ```
 
-## Command line interface example
-- Run the script
+## Command line interface
+- First time:
 ```bash
 sudo python3 run_controller_cli.py PRO_CONTROLLER
 ```
-This will create a PRO_CONTROLLER instance waiting for the Switch to connect.
 
-- Open the "Change Grip/Order" menu of the Switch
+Then open the "Change Grip/Order" menu of the Switch.
 
-The Switch only pairs with new controllers in the "Change Grip/Order" menu.
+- Second/future times:
+```
+sudo python3 run_controller_cli.py PRO_CONTROLLER -r '00:00:00:00:00:00'
+```
 
-Note: If you already connected an emulated controller once, you can use the reconnect option of the script (-r "\<Switch Bluetooth Mac address>").
-This does not require the "Change Grip/Order" menu to be opened. You can find out a paired mac address using the "bluetoothctl" system command.
+Reconnecting no longer requires opening the "Change Grip/Order" menu. Substitute an actual MAC address; you can find out a paired mac address using the "bluetoothctl" system command, or buried in the terminal output from the first connection. TODO output this accessibly
 
-- After connecting, a command line interface is opened. Note: Press \<enter> if you don't see a prompt.
+- After (re)connecting, press `enter` and a `>>>` prompt should appear.
 
-Call "help" to see a list of available commands.
+- Use e.g. `a` to press A, `help` to see a list of available commands, and `test_buttons` (from the Home menu) to auto-navigate to the "Test Controller Buttons" menu.
 
-- If you call "test_buttons", the emulated controller automatically navigates to the "Test Controller Buttons" menu. 
-
+## TUI hack
+```
+sudo python3 run_controller_cli.py PRO_CONTROLLER tui [-r '00:00:00:00:00:00']
+```
+Hardcoded controls at https://github.com/blueapple128/joycontrol/blob/master/joycontrol/command_line_interface.py#L166.
 
 ## Issues
 - Some bluetooth adapters seem to cause disconnects for reasons unknown, try to use an usb adapter instead 
