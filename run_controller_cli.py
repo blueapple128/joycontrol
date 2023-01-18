@@ -299,7 +299,7 @@ async def _main(args):
 
         # run the cli
         try:
-            await cli.run()
+            await cli.run(args.tui)
         finally:
             logger.info('Stopping communication...')
             await transport.close()
@@ -322,6 +322,7 @@ if __name__ == '__main__':
     parser.add_argument('-r', '--reconnect_bt_addr', type=str, default=None,
                         help='The Switch console Bluetooth address, for reconnecting as an already paired controller')
     parser.add_argument('--nfc', type=str, default=None)
+    parser.add_argument('-tui', action='store_true')
     args = parser.parse_args()
 
     loop = asyncio.get_event_loop()
