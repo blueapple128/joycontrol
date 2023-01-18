@@ -24,11 +24,7 @@ def get_usb_devices():
 
         if (len(productid) < 1 or len(vendorid) < 1 or
                 len(manufacturer) < 1 or len(product) < 1):
-            #continue
-            productid.append('foo')
-            vendorid.append('foo')
-            manufacturer.append('foo')
-            product.append('foo')
+            continue
 
         productid = productid[0]
         vendorid = vendorid[0]

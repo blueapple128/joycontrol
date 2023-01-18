@@ -24,7 +24,12 @@ Arch Linux Derivatives: Install the `hidapi` and `bluez-utils-compat`(AUR) packa
 ```bash
 sudo pip3 install .
 ```
-- Consider to disable the bluez "input" plugin, see [#8](https://github.com/mart1nro/joycontrol/issues/8)
+<!-- - Consider to disable the bluez "input" plugin, see [#8](https://github.com/mart1nro/joycontrol/issues/8) -->
+
+- Also run:
+```
+sudo pip3 install hid==1.0.4
+```
 
 ## Command line interface example
 - Run the script
